@@ -117,3 +117,10 @@ void Vmain::prepareClone() const { contextp()->prepareClone(); }
 void Vmain::atClone() const {
     contextp()->threadPoolpOnClone();
 }
+
+//============================================================
+// Trace configuration
+
+VL_ATTR_COLD void Vmain::trace(VerilatedVcdC* tfp, int levels, int options) {
+    vl_fatal(__FILE__, __LINE__, __FILE__,"'Vmain::trace()' called on model that was Verilated without --trace option");
+}

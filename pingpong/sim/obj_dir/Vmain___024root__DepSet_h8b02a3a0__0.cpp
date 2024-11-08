@@ -11,14 +11,13 @@ VL_ATTR_COLD void Vmain___024root___dump_triggers__act(Vmain___024root* vlSelf);
 #endif  // VL_DEBUG
 
 void Vmain___024root___eval_triggers__act(Vmain___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+    if (false && vlSelf) {}  // Prevent unused
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_triggers__act\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.__VactTriggered.set(0U, ((IData)(vlSelfRef.pixel_clk) 
-                                       & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__pixel_clk__0))));
-    vlSelfRef.__Vtrigprevexpr___TOP__pixel_clk__0 = vlSelfRef.pixel_clk;
+    vlSelf->__VactTriggered.set(0U, ((IData)(vlSelf->pixel_clk) 
+                                     & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__pixel_clk__0))));
+    vlSelf->__Vtrigprevexpr___TOP__pixel_clk__0 = vlSelf->pixel_clk;
 #ifdef VL_DEBUG
     if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
         Vmain___024root___dump_triggers__act(vlSelf);

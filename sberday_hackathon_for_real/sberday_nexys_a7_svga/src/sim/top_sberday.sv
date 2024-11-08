@@ -6,7 +6,12 @@ module top_sberday (
   input   logic             button_d     ,
   input   logic             button_r     ,
   input   logic             button_l     ,
+//  input   logic             clk    ,
+
+  output logic speaker,
   //
+
+
   input   logic  [7:0]      accel_data_x ,
   input   logic  [7:0]      accel_data_y ,
   //

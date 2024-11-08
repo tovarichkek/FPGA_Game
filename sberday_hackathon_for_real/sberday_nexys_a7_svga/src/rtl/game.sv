@@ -49,7 +49,7 @@ module game (
     //  |   V heigh
     //  |
     //  V
-    parameter     object_width  = 100  ;         // Horizontal width
+    parameter     object_width  = 150  ;         // Horizontal width
     parameter     object_height = 10 ;         // Vertical height
     logic         object_draw        ;         // Is Sber Logo or demo object coordinate (with width and height)?
     logic [9:0]   object_h_coord     ;         // Object Point(P) horizontal coodrinate
@@ -166,6 +166,9 @@ module game (
           else
             object_v_coord <= object_v_coord + object_v_speed;
         end*/
+            
+
+
       end
       else if (regime_store == 2'b10) begin  // Accelerometer regime
         if      ( !accel_data_y_corr[7] && ( accel_data_y_corr != 8'h00 )) begin

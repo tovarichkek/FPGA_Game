@@ -63,6 +63,13 @@ module pingpong (
     logic [9:0]   board2_h_coord     ;         // Object Point(P) horizontal coodrinate
     logic [9:0]   board2_v_coord     ;         // Object Point(P) vertical coordinate
 
+    logic [31:0]  logo_counter     ;      // Counter is counting how long showing logo
+    wire          logo_active      ;      // Demonstrating logo
+    // Read only memory (ROM) for sber logo file
+    wire  [11:0]  logo_rom_out     ;
+    wire  [18:0]  logo_read_address;
+
+    logic         object_draw        ;
 
     parameter     ball_width  = 16 ;         // Horizontal width
     parameter     ball_height = 16 ;         // Vertical height
@@ -213,17 +220,52 @@ module pingpong (
     end
   end
 
+//--------------LOGO
+    always @ ( posedge pixel_clk ) begin
+      if ( !rst_n )
+        logo_counter <= 32'b0;
+      else if ( logo_counter <= 32'd2_00000000 )
+        logo_counter <= logo_counter + 32'd3;
+    end
+    assign logo_active = ( logo_counter < 32'd2_00000000 );
+  //----------- SBER logo ROM                                    -----------//
+    // Screen resoulution is 800x600, the logo size is 128x128. We need to put the logo in the center.
+    // Logo offset = (800-128)/2=336 from the left edge; Logo v coord = (600-128)/2 = 236
+    // Cause we need 1 clock for reading, we start erlier
+    assign logo_read_address = 0;
+
+    logo_rom logo_rom (
+      .addr ( logo_read_address ),
+      .word ( logo_rom_out      ) 
+    );
+
+
 //------------- RGB MUX outputs                                  -------------//
   always_comb begin
-    if (1'b1) begin
+    if ( logo_active ) 
+      object_draw = (h_coord[9:0] >= 10'd335) & (h_coord[9:0] < 10'd463) & (v_coord >= 10'd235) & (v_coord < 10'd363) & ~(logo_rom_out[11:0]==12'h000) ; // Logo size is 128x128 Pixcels
+        //object_draw = (h_coord >= 10'd0) &  (h_coord < 10'd600) & (v_coord >= 10'd0) &  (v_coord < 10'd600) & ~(logo_rom_out == 12'h000) ; // Logo size is 128x128 Pixcels
+    else 
+        object_draw = 0;
+    begin
         board1 = (( h_coord >= board1_h_coord ) & ( h_coord <= (board1_h_coord + board_width  )) & ( v_coord >= board1_v_coord ) & ( v_coord <= (board1_v_coord + board_height ))) ;
         board2 = (( h_coord >= board2_h_coord ) & ( h_coord <= (board2_h_coord + board_width  )) & ( v_coord >= board2_v_coord ) & ( v_coord <= (board2_v_coord + board_height ))) ;
         ball =   (( h_coord >= ball_h_coord )   & ( h_coord <= (ball_h_coord + ball_width  ))    & ( v_coord >= ball_v_coord )   & ( v_coord <= (ball_v_coord + ball_height ))) ;
     end
   end
 
+
+  assign  red     = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[3:0]  ) : (SW[0] ? 4'h8 : 4'h0);
+  assign  green   = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[7:4]  ) : (SW[1] ? 4'h8 : 4'h0);
+  assign  blue    = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[11:8] ) : (SW[2] ? 4'h8 : 4'h0);
+
+ /* assign  red     = (object_draw & logo_active) ? logo_rom_out[3:0]  : (ball ? (SW[3] ? 4'hf : 4'hf) : ( (board1 | board2) ? (SW[6] ? 4'hc : 4'hf) : ( SW[0] ? 4'h8 : 4'h0 ) ));
+  assign  green   = (object_draw & logo_active) ? logo_rom_out[7:4]  : (ball ? (SW[4] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[7] ? 4'hc : 4'hf) : ( SW[1] ? 4'h8 : 4'h0 ) ));
+  assign  blue    = (object_draw & logo_active) ? logo_rom_out[11:8] : (ball ? (SW[5] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[8] ? 4'hc : 4'hf) : ( SW[2] ? 4'h8 : 4'h0 ) ));
+*//*
   assign  red     = ball ? (SW[3] ? 4'hf : 4'hf) : ( (board1 | board2) ? (SW[6] ? 4'hc : 4'hf) : ( SW[0] ? 4'h8 : 4'h0 ) );
   assign  green   = ball ? (SW[4] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[7] ? 4'hc : 4'hf) : ( SW[1] ? 4'h8 : 4'h0 ) );
   assign  blue    = ball ? (SW[5] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[8] ? 4'hc : 4'hf) : ( SW[2] ? 4'h8 : 4'h0 ) );
+*/
 //____________________________________________________________________________//
 endmodule

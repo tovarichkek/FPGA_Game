@@ -17,7 +17,7 @@ Vmain___024root::Vmain___024root(Vmain__Syms* symsp, const char* v__name)
 }
 
 void Vmain___024root::__Vconfigure(bool first) {
-    (void)first;  // Prevent unused variable warning
+    if (false && first) {}  // Prevent unused
 }
 
 Vmain___024root::~Vmain___024root() {

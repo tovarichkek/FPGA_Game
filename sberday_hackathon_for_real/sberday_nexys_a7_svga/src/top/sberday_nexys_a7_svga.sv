@@ -1,6 +1,7 @@
 module sberday_nexys_a7_svga (
   //----------- CLOCK                                            -------------//
     input   logic            CLK100MHZ ,
+    input   logic            clk,
   //----------- Switches                                         -------------//
     input   logic  [15:0]    SW        ,
   //----------- LEDs                                             -------------//
@@ -37,6 +38,7 @@ module sberday_nexys_a7_svga (
     wire          pll_locked   ;
     wire          pll_rst_n    ;
     wire          rst_n        ;
+    wire voice;
   //----------- VGA Controller                                   -----------//
     wire [31:0]   h_coord, v_coord;         // Pixcels Coordinates
     wire [3:0]    red, green, blue; // Pixcels Colors
@@ -221,5 +223,11 @@ module sberday_nexys_a7_svga (
           VGA_VS <= v_sync;
       end
 //____________________________________________________________________________//
+
+    music music (
+      .clk(clk)
+      .speaker(speaker)
+  );
+
 
 endmodule
