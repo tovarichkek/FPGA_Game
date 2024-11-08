@@ -24,8 +24,8 @@ module pingpong (
     input  wire  [8:0]    SW        ,
   //--------- Regime                             --------//
     output wire           regime_status,
-    output wire  [7:0]    p1_counter,
-    output wire  [7:0]    p2_counter
+    output wire  [6:0]    p1_counter,
+    output wire  [6:0]    p2_counter
 );
 
 //------------------------- Variables                    ----------------------------//
@@ -79,8 +79,8 @@ module pingpong (
     logic [9:0]   delta_speed = 10'b0 ;
 
   //----------------------- Point counters               ----------------------------//
-    logic  [7:0]    p1_count;
-    logic  [7:0]    p2_count;
+    logic  [6:0]    p1_count;
+    logic  [6:0]    p2_count;
     
 //------------------------- End of Frame                 ----------------------------//
   // We recount game object once at the end of display counter //

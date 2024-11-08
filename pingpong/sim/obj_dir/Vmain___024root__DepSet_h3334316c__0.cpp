@@ -124,7 +124,7 @@ VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf
         }
         if (((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
              & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr))) {
-            if (vlSelfRef.test_game__DOT__game__DOT__regime_store) {
+            if ((1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
                 if (vlSelfRef.button_u) {
                     __Vdly__test_game__DOT__game__DOT__board2_h_coord 
                         = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord))
@@ -137,38 +137,43 @@ VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf
                             ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
                                                   + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord))));
                 }
-                if (vlSelfRef.button_l) {
-                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
-                        = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
-                            ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
-                                              - (IData)(0x14U))));
-                } else if (vlSelfRef.button_d) {
-                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
-                        = ((0x31fU <= ((IData)(0x78U) 
-                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
-                            ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
-                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
-                }
-            } else if ((1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
-                if (((~ (1U & (((IData)(1U) + (IData)(vlSelfRef.accel_data_y)) 
-                               >> 7U))) & (0U != (0xffU 
+            }
+            if (vlSelfRef.test_game__DOT__game__DOT__regime_store) {
+                if (vlSelfRef.test_game__DOT__game__DOT__regime_store) {
+                    if (((~ (1U & (((IData)(1U) + (IData)(vlSelfRef.accel_data_y)) 
+                                   >> 7U))) & (0U != 
+                                               (0xffU 
+                                                & ((IData)(1U) 
+                                                   + (IData)(vlSelfRef.accel_data_y)))))) {
+                        __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                            = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
+                                ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
+                                                  - (IData)(0x14U))));
+                    } else if ((1U & ((((IData)(1U) 
+                                        + (IData)(vlSelfRef.accel_data_y)) 
+                                       >> 7U) & (0U 
+                                                 != 
+                                                 (0xffU 
                                                   & ((IData)(1U) 
-                                                     + (IData)(vlSelfRef.accel_data_y)))))) {
-                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
-                        = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
-                            ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
-                                              - (IData)(0x14U))));
-                } else if ((1U & ((((IData)(1U) + (IData)(vlSelfRef.accel_data_y)) 
-                                   >> 7U) & (0U != 
-                                             (0xffU 
-                                              & ((IData)(1U) 
-                                                 + (IData)(vlSelfRef.accel_data_y))))))) {
-                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
-                        = ((0x31fU <= ((IData)(0x78U) 
-                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
-                            ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
-                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
+                                                     + (IData)(vlSelfRef.accel_data_y))))))) {
+                        __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                            = ((0x31fU <= ((IData)(0x78U) 
+                                           + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
+                                ? 0x2bbU : (0x3ffU 
+                                            & ((IData)(0x14U) 
+                                               + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
+                    }
                 }
+            } else if (vlSelfRef.button_l) {
+                __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                    = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
+                        ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
+                                          - (IData)(0x14U))));
+            } else if (vlSelfRef.button_d) {
+                __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                    = ((0x31fU <= ((IData)(0x78U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
+                        ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
+                                              + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
             }
             if (vlSelfRef.test_game__DOT__game__DOT__x_direction) {
                 if (((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
@@ -199,7 +204,7 @@ VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf
         __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
     } else if ((((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
                  & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr)) 
-                & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
+                & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store))) {
         __Vdly__test_game__DOT__game__DOT__y_direction 
             = (1U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction));
         if ((1U & (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))) {
@@ -309,15 +314,16 @@ VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf
         __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
     } else if ((((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
                  & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr)) 
-                & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store))) {
+                & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
         if ((2U & (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))) {
             if (((((IData)(vlSelfRef.button_u) | (IData)(vlSelfRef.button_d)) 
                   | (IData)(vlSelfRef.button_l)) | (IData)(vlSelfRef.button_r))) {
-                __Vdly__test_game__DOT__game__DOT__y_direction 
-                    = (1U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction));
                 vlSelfRef.test_game__DOT__game__DOT__delta_speed 
                     = ((0x3f0U & (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)) 
                        | (0xfU & vlSelfRef.test_game__DOT__game__DOT__rand_mod));
+                __Vdly__test_game__DOT__game__DOT__y_direction 
+                    = (1U & (vlSelfRef.test_game__DOT__game__DOT__rand_mod 
+                             >> 4U));
                 __Vdly__test_game__DOT__game__DOT__rand_mod 
                     = VL_RANDOM_I();
             }
@@ -463,7 +469,7 @@ VL_INLINE_OPT void Vmain___024root___nba_comb__TOP__0(Vmain___024root* vlSelf) {
                    >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord))) 
                & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
                   <= ((IData)(0x14U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord)))) 
-              & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)));
+              & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store))));
 }
 
 void Vmain___024root___eval_triggers__act(Vmain___024root* vlSelf);

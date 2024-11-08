@@ -145,7 +145,7 @@ VL_ATTR_COLD void Vmain___024root___stl_sequent__TOP__0(Vmain___024root* vlSelf)
                    >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord))) 
                & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
                   <= ((IData)(0x14U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord)))) 
-              & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)));
+              & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store))));
 }
 
 VL_ATTR_COLD void Vmain___024root___eval_triggers__stl(Vmain___024root* vlSelf);
