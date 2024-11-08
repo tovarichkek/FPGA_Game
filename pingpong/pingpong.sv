@@ -23,7 +23,9 @@ module pingpong (
   //--------- Switches for background colour     --------//
     input  wire  [8:0]    SW        ,
   //--------- Regime                             --------//
-    output wire           regime_status
+    output wire           regime_status,
+    output wire  [6:0]    p1_counter,
+    output wire  [6:0]    p2_counter
 );
 
 //------------------------- Variables                    ----------------------------//
@@ -35,7 +37,7 @@ module pingpong (
     logic     [31:0]  frames_cntr ;
     logic             end_of_frame;           // End of frame's active zone
   //----------------------- Accelerometr                 --------------------------//
-    parameter     ACCEL_X_CORR = 8'd3;        // Accelerometer x correction
+    parameter     ACCEL_X_CORR = 8'd120;        // Accelerometer x correction
     parameter     ACCEL_Y_CORR = 8'd1;        // Accelerometer y correction
     wire   [7:0]  accel_data_x_corr  ;        // Accelerometer x corrected data
     wire   [7:0]  accel_data_y_corr  ;        // Accelerometer y corrected data
@@ -63,22 +65,22 @@ module pingpong (
     logic [9:0]   board2_h_coord     ;         // Object Point(P) horizontal coodrinate
     logic [9:0]   board2_v_coord     ;         // Object Point(P) vertical coordinate
 
-    logic [31:0]  logo_counter     ;      // Counter is counting how long showing logo
-    wire          logo_active      ;      // Demonstrating logo
-    // Read only memory (ROM) for sber logo file
-    wire  [11:0]  logo_rom_out     ;
-    wire  [18:0]  logo_read_address;
-
-    logic         object_draw        ;
 
     parameter     ball_width  = 16 ;         // Horizontal width
     parameter     ball_height = 16 ;         // Vertical height
     logic [9:0]   ball_h_coord     ;         // Object Point(P) horizontal coodrinate
     logic [9:0]   ball_v_coord     ;         // Object Point(P) vertical coordinate
-    parameter     ball_h_speed = 16  ;         // Horizontal Object movement speed
-    parameter     ball_v_speed = 16  ;       // Vertical Object movement speed
+    parameter     ball_h_speed = 8  ;         // Horizontal Object movement speed
+    parameter     ball_v_speed = 10  ;       // Vertical Object movement speed
     logic         x_direction = 1'b0 ;
-    logic         y_direction = 1'b0 ;
+    logic [1:0]   y_direction = 2'b10 ;
+
+    logic [31:0]  rand_mod    = 32'd10  ; 
+    logic [9:0]   delta_speed = 10'b0 ;
+
+  //----------------------- Point counters               ----------------------------//
+    logic  [6:0]    p1_count;
+    logic  [6:0]    p2_count;
     
 //------------------------- End of Frame                 ----------------------------//
   // We recount game object once at the end of display counter //
@@ -98,14 +100,9 @@ module pingpong (
     end
 
 //------------------------- Regime control               ----------------------------//
-  always @ ( posedge pixel_clk ) begin
-    if ( !rst_n ) begin
-      regime_store <= 1'b1;
-    end
-    if ( change_regime ) begin
-      regime_store <= 1'b1 - regime_store;
-    end
-  end
+  always @ ( posedge change_regime ) begin
+          regime_store <= 1'b1 - regime_store;
+  end 
   assign change_regime      = button_c    ;
   assign regime_status      = regime_store;
 
@@ -130,8 +127,6 @@ module pingpong (
       board1_v_coord <= 0;
       board2_h_coord <= 350;
       board2_v_coord <= 580;
-      ball_h_coord   <= 390;
-      ball_v_coord   <= 290;
     end
     else if ( end_of_frame && (frames_cntr == 0) ) begin
       if (regime_store == 1'b1) begin  // Buttons regime
@@ -181,91 +176,125 @@ module pingpong (
   always @ ( posedge pixel_clk ) begin
     if ( !rst_n ) begin 
       ball_h_coord   <= 390;
-      ball_v_coord   <= 290;
     end
     else if ( end_of_frame && (frames_cntr == 0) ) begin
-    if ( ~x_direction ) begin           // Moving left
-      if ( ball_h_coord < ball_h_speed) begin
+    if ( x_direction ) begin
+      if ( ball_h_coord < ball_h_speed + delta_speed) begin
         ball_h_coord <= 0;
-        x_direction = ~x_direction;
+        x_direction  <= ~x_direction;
       end
       else
-        ball_h_coord <= ball_h_coord - ball_h_speed;
+        ball_h_coord <= ball_h_coord - ball_h_speed - delta_speed;
     end
     else begin
-      if ( ball_h_coord + ball_h_speed + ball_width >= 10'd799 ) begin
+      if ( ball_h_coord + ball_h_speed + delta_speed + ball_width >= 10'd799 ) begin
         ball_h_coord <= 10'd799 - ball_width;
-        x_direction = ~x_direction;
+        x_direction  <= ~x_direction;
       end
       else
-        ball_h_coord <= ball_h_coord + ball_h_speed;
-    end
-        //
-    if      ( ~y_direction ) begin           // Moving left
-      if ( ball_v_coord < ball_v_speed) begin
-        ball_v_coord <= 0;
-        y_direction = ~y_direction;
-      end
-      else
-        ball_v_coord <= ball_v_coord - ball_v_speed;
-    end
-    else begin
-      if ( ball_v_coord + ball_v_speed + ball_height >= 10'd599 ) begin
-        ball_v_coord <= 10'd599 - ball_height;
-        y_direction = ~y_direction;
-      end
-      else
-        ball_v_coord <= ball_v_coord + ball_v_speed;
+        ball_h_coord <= ball_h_coord + ball_h_speed + delta_speed;
     end
     end
   end
 
-//--------------LOGO
-    always @ ( posedge pixel_clk ) begin
-      if ( !rst_n )
-        logo_counter <= 32'b0;
-      else if ( logo_counter <= 32'd2_00000000 )
-        logo_counter <= logo_counter + 32'd3;
+  always @ ( posedge pixel_clk ) begin
+    if ( !rst_n ) begin
+      ball_v_coord   <= 290;
     end
-    assign logo_active = ( logo_counter < 32'd2_00000000 );
-  //----------- SBER logo ROM                                    -----------//
-    // Screen resoulution is 800x600, the logo size is 128x128. We need to put the logo in the center.
-    // Logo offset = (800-128)/2=336 from the left edge; Logo v coord = (600-128)/2 = 236
-    // Cause we need 1 clock for reading, we start erlier
-    assign logo_read_address = 0;
+    else if ( end_of_frame && (frames_cntr == 0) && regime_store ) begin
+      if (y_direction[1]) begin
+        if (button_u | button_d | button_l | button_r) begin
+          y_direction[1] <= 1'b0;
+          rand_mod <= $random;
+          delta_speed[3:0] <= rand_mod[3:0];
+        end
+      end
+      else if ( y_direction[0] ) begin    
+        if ( (ball_v_coord - ball_v_speed < board_height) & (ball_h_coord + ball_width > board1_h_coord & ball_h_coord < board1_h_coord + board_width ) ) begin
+          ball_v_coord <= board_height;
+          y_direction[0] <= ~y_direction[0];
+          rand_mod <= $random;
+          delta_speed[3:0] <= rand_mod[3:0];
+        end      
+        else if ( ball_v_coord < ball_v_speed) begin
+          // player 1 lost
+          p2_count = p2_count + 1;
+          $display("%d:%d", p1_count, p2_count);
+          ball_v_coord <= 10'd290;
+          y_direction  <= 2'b10;
+        end
+        else
+          ball_v_coord <= ball_v_coord - ball_v_speed;
+        end
+      else begin
+        if ( (ball_v_coord + ball_v_speed + ball_height > 10'd599 - board_height) & (ball_h_coord + ball_width > board2_h_coord & ball_h_coord < board2_h_coord + board_width )) begin
+          ball_v_coord <= 10'd599 - board_height - ball_height;
+          y_direction[0] <= ~y_direction[0];
+          rand_mod <= $random;
+          delta_speed[3:0] <= rand_mod[3:0];
+        end  
+        else if ( ball_v_coord + ball_v_speed + ball_height >= 10'd599 ) begin
+          // player 2 lost
+          p1_count <= p1_count + 1;
+          $display("%d:%d", p1_count, p2_count);
+          ball_v_coord <= 10'd290;
+          y_direction  <= 2'b11;
+        end
+        else
+          ball_v_coord <= ball_v_coord + ball_v_speed;
+      end
+    end
+  end
 
-    logo_rom logo_rom (
-      .addr ( logo_read_address ),
-      .word ( logo_rom_out      ) 
-    );
+    always @ ( posedge pixel_clk ) begin
+    if ( !rst_n ) begin
+      ball_v_coord   <= 290;
+    end
+    else if ( end_of_frame && (frames_cntr == 0) && ~regime_store) begin
+      y_direction[1] <= 1'b0;
+      if ( y_direction[0] ) begin    
+        if ( (ball_v_coord - ball_v_speed < board_height) & (ball_h_coord + ball_width > board1_h_coord & ball_h_coord < board1_h_coord + board_width ) ) begin
+          ball_v_coord   <= board_height;
+          y_direction[0] <= ~y_direction[0];
+        end      
+        else if ( ball_v_coord < ball_v_speed) begin
+          // player 1 lost
+          $display("you lose");
+          ball_v_coord <= 10'd590;
+          y_direction  <= 2'b00;
+        end
+        else
+          ball_v_coord <= ball_v_coord - ball_v_speed;
+        end
+      else begin
+        if ( (ball_v_coord + ball_v_speed + ball_height > 10'd599 - board_height) & (ball_h_coord + ball_width > board2_h_coord & ball_h_coord < board2_h_coord + board_width )) begin
+          ball_v_coord   <= 10'd599 - board_height - ball_height;
+          y_direction[0] <= ~y_direction[0];
+        end  
+        else if ( ball_v_coord + ball_v_speed + ball_height >= 10'd599 ) begin
+            ball_v_coord <= 10'd599 - ball_height;
+            y_direction  <= 2'b01;
+        end
+        else
+          ball_v_coord <= ball_v_coord + ball_v_speed;
+      end
+    end
+  end
 
+  assign p1_counter = p1_count;
+  assign p2_counter = p2_count;
 
 //------------- RGB MUX outputs                                  -------------//
   always_comb begin
-    if ( logo_active ) 
-      object_draw = (h_coord[9:0] >= 10'd335) & (h_coord[9:0] < 10'd463) & (v_coord >= 10'd235) & (v_coord < 10'd363) & ~(logo_rom_out[11:0]==12'h000) ; // Logo size is 128x128 Pixcels
-        //object_draw = (h_coord >= 10'd0) &  (h_coord < 10'd600) & (v_coord >= 10'd0) &  (v_coord < 10'd600) & ~(logo_rom_out == 12'h000) ; // Logo size is 128x128 Pixcels
-    else 
-        object_draw = 0;
-    begin
-        board1 = (( h_coord >= board1_h_coord ) & ( h_coord <= (board1_h_coord + board_width  )) & ( v_coord >= board1_v_coord ) & ( v_coord <= (board1_v_coord + board_height ))) ;
-        board2 = (( h_coord >= board2_h_coord ) & ( h_coord <= (board2_h_coord + board_width  )) & ( v_coord >= board2_v_coord ) & ( v_coord <= (board2_v_coord + board_height ))) ;
-        ball =   (( h_coord >= ball_h_coord )   & ( h_coord <= (ball_h_coord + ball_width  ))    & ( v_coord >= ball_v_coord )   & ( v_coord <= (ball_v_coord + ball_height ))) ;
+    if (1'b1) begin
+        board1 = (( h_coord >= board1_h_coord ) && ( h_coord <= (board1_h_coord + board_width  )) && ( v_coord >= board1_v_coord ) && ( v_coord <= (board1_v_coord + board_height ))) ;
+        board2 = (( h_coord >= board2_h_coord ) && ( h_coord <= (board2_h_coord + board_width  )) && ( v_coord >= board2_v_coord ) && ( v_coord <= (board2_v_coord + board_height )) && regime_store) ;
+        ball   = (( h_coord >= ball_h_coord )   && ( h_coord <= (ball_h_coord + ball_width  ))    && ( v_coord >= ball_v_coord )   && ( v_coord <= (ball_v_coord + ball_height ))) ;
     end
   end
 
-
-  assign  red     = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[3:0]  ) : (SW[0] ? 4'h8 : 4'h0);
-  assign  green   = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[7:4]  ) : (SW[1] ? 4'h8 : 4'h0);
-  assign  blue    = object_draw ? ( ~logo_active ? 4'hf : logo_rom_out[11:8] ) : (SW[2] ? 4'h8 : 4'h0);
-
- /* assign  red     = (object_draw & logo_active) ? logo_rom_out[3:0]  : (ball ? (SW[3] ? 4'hf : 4'hf) : ( (board1 | board2) ? (SW[6] ? 4'hc : 4'hf) : ( SW[0] ? 4'h8 : 4'h0 ) ));
-  assign  green   = (object_draw & logo_active) ? logo_rom_out[7:4]  : (ball ? (SW[4] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[7] ? 4'hc : 4'hf) : ( SW[1] ? 4'h8 : 4'h0 ) ));
-  assign  blue    = (object_draw & logo_active) ? logo_rom_out[11:8] : (ball ? (SW[5] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[8] ? 4'hc : 4'hf) : ( SW[2] ? 4'h8 : 4'h0 ) ));
-*//*
   assign  red     = ball ? (SW[3] ? 4'hf : 4'hf) : ( (board1 | board2) ? (SW[6] ? 4'hc : 4'hf) : ( SW[0] ? 4'h8 : 4'h0 ) );
   assign  green   = ball ? (SW[4] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[7] ? 4'hc : 4'hf) : ( SW[1] ? 4'h8 : 4'h0 ) );
   assign  blue    = ball ? (SW[5] ? 4'hf : 4'h0) : ( (board1 | board2) ? (SW[8] ? 4'hc : 4'hf) : ( SW[2] ? 4'h8 : 4'h0 ) );
-*/
 //____________________________________________________________________________//
 endmodule

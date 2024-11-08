@@ -17,6 +17,8 @@ Vmain__Syms::Vmain__Syms(VerilatedContext* contextp, const char* namep, Vmain* m
     // Setup module instances
     , TOP{this, namep}
 {
+        // Check resources
+        Verilated::stackCheck(64);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

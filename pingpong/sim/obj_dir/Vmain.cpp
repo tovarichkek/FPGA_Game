@@ -10,8 +10,8 @@ Vmain::Vmain(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vmain__Syms(contextp(), _vcname__, this)}
     , pixel_clk{vlSymsp->TOP.pixel_clk}
-    , sim_rst{vlSymsp->TOP.sim_rst}
     , button_c{vlSymsp->TOP.button_c}
+    , sim_rst{vlSymsp->TOP.sim_rst}
     , button_u{vlSymsp->TOP.button_u}
     , button_d{vlSymsp->TOP.button_d}
     , button_r{vlSymsp->TOP.button_r}
@@ -116,11 +116,4 @@ unsigned Vmain::threads() const { return 1; }
 void Vmain::prepareClone() const { contextp()->prepareClone(); }
 void Vmain::atClone() const {
     contextp()->threadPoolpOnClone();
-}
-
-//============================================================
-// Trace configuration
-
-VL_ATTR_COLD void Vmain::trace(VerilatedVcdC* tfp, int levels, int options) {
-    vl_fatal(__FILE__, __LINE__, __FILE__,"'Vmain::trace()' called on model that was Verilated without --trace option");
 }

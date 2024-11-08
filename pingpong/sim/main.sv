@@ -64,8 +64,10 @@ module test_game (
       .SW                     ( {sw8, sw7, sw6, sw5, sw4, sw3, sw2, sw1, sw0} ),  // We are using switches to change background
     //--------------------- Demo regime status           ----------------------------//
       /* verilator lint_off PINCONNECTEMPTY */
-      .regime_status     (                 )   // Red led on the board which show REGIME
+      .regime_status     (                 ),   // Red led on the board which show REGIME
       /* verilator lint_on PINCONNECTEMPTY */
+      .p1_counter        (                 ),
+      .p2_counter        (                 )
   );
 //____________________________________________________________________________//
 

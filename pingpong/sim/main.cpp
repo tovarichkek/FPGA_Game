@@ -101,9 +101,15 @@ int main(int argc, char* argv[]) {
         top->button_r = keyb_state[SDL_SCANCODE_RIGHT];
         top->button_l = keyb_state[SDL_SCANCODE_LEFT];
         top->button_c = keyb_state[SDL_SCANCODE_SPACE];
-        top->sw0 = keyb_state[SDL_SCANCODE_C];
-        top->sw1 = keyb_state[SDL_SCANCODE_V];
-        top->sw2 = keyb_state[SDL_SCANCODE_B];
+        top->sw0 = keyb_state[SDL_SCANCODE_Z];
+        top->sw1 = keyb_state[SDL_SCANCODE_X];
+        top->sw2 = keyb_state[SDL_SCANCODE_C];
+        top->sw3 = keyb_state[SDL_SCANCODE_V];
+        top->sw4 = keyb_state[SDL_SCANCODE_B];
+        top->sw5 = keyb_state[SDL_SCANCODE_N];
+        top->sw6 = keyb_state[SDL_SCANCODE_M];
+        top->sw7 = keyb_state[SDL_SCANCODE_A];
+        top->sw8 = keyb_state[SDL_SCANCODE_S];
 
         SDL_UpdateTexture(sdl_texture, NULL, screenbuffer, H_RES*sizeof(Pixel));
         SDL_RenderClear(sdl_renderer);

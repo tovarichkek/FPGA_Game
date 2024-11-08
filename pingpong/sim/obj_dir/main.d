@@ -11,19 +11,19 @@ main.o: ../main.cpp /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_blendmode.h /usr/include/SDL2/SDL_keyboard.h \
  /usr/include/SDL2/SDL_keycode.h /usr/include/SDL2/SDL_scancode.h \
  /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_joystick.h \
- /usr/include/SDL2/SDL_guid.h /usr/include/SDL2/SDL_gamecontroller.h \
- /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
- /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
- /usr/include/SDL2/SDL_filesystem.h /usr/include/SDL2/SDL_haptic.h \
- /usr/include/SDL2/SDL_hidapi.h /usr/include/SDL2/SDL_hints.h \
- /usr/include/SDL2/SDL_loadso.h /usr/include/SDL2/SDL_log.h \
- /usr/include/SDL2/SDL_messagebox.h /usr/include/SDL2/SDL_metal.h \
- /usr/include/SDL2/SDL_power.h /usr/include/SDL2/SDL_render.h \
- /usr/include/SDL2/SDL_shape.h /usr/include/SDL2/SDL_system.h \
- /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
- /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
- /usr/share/verilator/include/verilated.h \
- /usr/share/verilator/include/verilatedos.h \
- /usr/share/verilator/include/verilated_config.h \
- /usr/share/verilator/include/verilated_types.h \
- /usr/share/verilator/include/verilated_funcs.h Vmain.h
+ /usr/include/SDL2/SDL_gamecontroller.h /usr/include/SDL2/SDL_sensor.h \
+ /usr/include/SDL2/SDL_quit.h /usr/include/SDL2/SDL_gesture.h \
+ /usr/include/SDL2/SDL_touch.h /usr/include/SDL2/SDL_filesystem.h \
+ /usr/include/SDL2/SDL_haptic.h /usr/include/SDL2/SDL_hidapi.h \
+ /usr/include/SDL2/SDL_hints.h /usr/include/SDL2/SDL_loadso.h \
+ /usr/include/SDL2/SDL_log.h /usr/include/SDL2/SDL_messagebox.h \
+ /usr/include/SDL2/SDL_metal.h /usr/include/SDL2/SDL_power.h \
+ /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
+ /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
+ /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
+ /usr/include/SDL2/SDL_misc.h \
+ /usr/local/share/verilator/include/verilated.h \
+ /usr/local/share/verilator/include/verilatedos.h \
+ /usr/local/share/verilator/include/verilated_config.h \
+ /usr/local/share/verilator/include/verilated_types.h \
+ /usr/local/share/verilator/include/verilated_funcs.h Vmain.h

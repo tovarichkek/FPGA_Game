@@ -6,186 +6,499 @@
 #include "Vmain___024root.h"
 
 void Vmain___024root___eval_act(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_act\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
+}
+
+void Vmain___024root___nba_sequent__TOP__0(Vmain___024root* vlSelf);
+void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf);
+void Vmain___024root___nba_sequent__TOP__2(Vmain___024root* vlSelf);
+void Vmain___024root___nba_comb__TOP__0(Vmain___024root* vlSelf);
+
+void Vmain___024root___eval_nba(Vmain___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_nba\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vmain___024root___nba_sequent__TOP__0(vlSelf);
+    }
+    if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vmain___024root___nba_sequent__TOP__1(vlSelf);
+    }
+    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vmain___024root___nba_sequent__TOP__2(vlSelf);
+    }
+    if ((3ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vmain___024root___nba_comb__TOP__0(vlSelf);
+    }
 }
 
 VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__0(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___nba_sequent__TOP__0\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.__Vdly__test_game__DOT__game__DOT__regime_store 
+        = vlSelfRef.test_game__DOT__game__DOT__regime_store;
+    vlSelfRef.__Vdly__test_game__DOT__game__DOT__regime_store 
+        = (1U & ((IData)(1U) - (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)));
+}
+
+VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__1(Vmain___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___nba_sequent__TOP__1\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Init
-    IData/*31:0*/ __Vdly__test_game__DOT__game__DOT__logo_counter;
-    __Vdly__test_game__DOT__game__DOT__logo_counter = 0;
+    IData/*31:0*/ __Vdly__test_game__DOT__game__DOT__frames_cntr;
+    __Vdly__test_game__DOT__game__DOT__frames_cntr = 0;
+    SData/*9:0*/ __Vdly__test_game__DOT__game__DOT__board2_h_coord;
+    __Vdly__test_game__DOT__game__DOT__board2_h_coord = 0;
+    SData/*9:0*/ __Vdly__test_game__DOT__game__DOT__board1_h_coord;
+    __Vdly__test_game__DOT__game__DOT__board1_h_coord = 0;
+    SData/*9:0*/ __Vdly__test_game__DOT__game__DOT__ball_h_coord;
+    __Vdly__test_game__DOT__game__DOT__ball_h_coord = 0;
+    CData/*0:0*/ __Vdly__test_game__DOT__game__DOT__x_direction;
+    __Vdly__test_game__DOT__game__DOT__x_direction = 0;
+    SData/*9:0*/ __Vdly__test_game__DOT__game__DOT__ball_v_coord;
+    __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0;
+    CData/*1:0*/ __Vdly__test_game__DOT__game__DOT__y_direction;
+    __Vdly__test_game__DOT__game__DOT__y_direction = 0;
+    IData/*31:0*/ __Vdly__test_game__DOT__game__DOT__rand_mod;
+    __Vdly__test_game__DOT__game__DOT__rand_mod = 0;
+    CData/*6:0*/ __Vdly__test_game__DOT__game__DOT__p1_count;
+    __Vdly__test_game__DOT__game__DOT__p1_count = 0;
     SData/*10:0*/ __Vdly__test_game__DOT__display_ctrl__DOT__h_count;
     __Vdly__test_game__DOT__display_ctrl__DOT__h_count = 0;
     SData/*9:0*/ __Vdly__test_game__DOT__display_ctrl__DOT__v_count;
     __Vdly__test_game__DOT__display_ctrl__DOT__v_count = 0;
     // Body
-    __Vdly__test_game__DOT__game__DOT__logo_counter 
-        = vlSelf->test_game__DOT__game__DOT__logo_counter;
-    __Vdly__test_game__DOT__display_ctrl__DOT__v_count 
-        = vlSelf->test_game__DOT__display_ctrl__DOT__v_count;
     __Vdly__test_game__DOT__display_ctrl__DOT__h_count 
-        = vlSelf->test_game__DOT__display_ctrl__DOT__h_count;
-    if (vlSelf->sim_rst) {
-        __Vdly__test_game__DOT__game__DOT__logo_counter = 0U;
+        = vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count;
+    __Vdly__test_game__DOT__display_ctrl__DOT__v_count 
+        = vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count;
+    __Vdly__test_game__DOT__game__DOT__frames_cntr 
+        = vlSelfRef.test_game__DOT__game__DOT__frames_cntr;
+    __Vdly__test_game__DOT__game__DOT__board2_h_coord 
+        = vlSelfRef.test_game__DOT__game__DOT__board2_h_coord;
+    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+        = vlSelfRef.test_game__DOT__game__DOT__board1_h_coord;
+    __Vdly__test_game__DOT__game__DOT__rand_mod = vlSelfRef.test_game__DOT__game__DOT__rand_mod;
+    __Vdly__test_game__DOT__game__DOT__p1_count = vlSelfRef.test_game__DOT__game__DOT__p1_count;
+    __Vdly__test_game__DOT__game__DOT__x_direction 
+        = vlSelfRef.test_game__DOT__game__DOT__x_direction;
+    __Vdly__test_game__DOT__game__DOT__ball_h_coord 
+        = vlSelfRef.test_game__DOT__game__DOT__ball_h_coord;
+    __Vdly__test_game__DOT__game__DOT__y_direction 
+        = vlSelfRef.test_game__DOT__game__DOT__y_direction;
+    __Vdly__test_game__DOT__game__DOT__ball_v_coord 
+        = vlSelfRef.test_game__DOT__game__DOT__ball_v_coord;
+    if (vlSelfRef.sim_rst) {
         __Vdly__test_game__DOT__display_ctrl__DOT__h_count = 0U;
         __Vdly__test_game__DOT__display_ctrl__DOT__v_count = 0U;
+        __Vdly__test_game__DOT__game__DOT__frames_cntr = 0U;
+        __Vdly__test_game__DOT__game__DOT__board2_h_coord = 0x15eU;
+        __Vdly__test_game__DOT__game__DOT__board1_h_coord = 0x15eU;
+        __Vdly__test_game__DOT__game__DOT__ball_h_coord = 0x186U;
     } else {
-        if ((0xbebc200U >= vlSelf->test_game__DOT__game__DOT__logo_counter)) {
-            __Vdly__test_game__DOT__game__DOT__logo_counter 
-                = ((IData)(3U) + vlSelf->test_game__DOT__game__DOT__logo_counter);
-        }
-        if ((0x41fU > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count))) {
+        if ((0x41fU > (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count))) {
             __Vdly__test_game__DOT__display_ctrl__DOT__h_count 
-                = (0x7ffU & ((IData)(1U) + (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count)));
+                = (0x7ffU & ((IData)(1U) + (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)));
         } else {
             __Vdly__test_game__DOT__display_ctrl__DOT__v_count 
-                = ((0x273U > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count))
-                    ? (0x3ffU & ((IData)(1U) + (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count)))
+                = ((0x273U > (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count))
+                    ? (0x3ffU & ((IData)(1U) + (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count)))
                     : 0U);
             __Vdly__test_game__DOT__display_ctrl__DOT__h_count = 0U;
         }
+        if ((2U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr)) {
+            __Vdly__test_game__DOT__game__DOT__frames_cntr = 0U;
+        } else if (vlSelfRef.test_game__DOT__game__DOT__end_of_frame) {
+            __Vdly__test_game__DOT__game__DOT__frames_cntr 
+                = ((IData)(1U) + vlSelfRef.test_game__DOT__game__DOT__frames_cntr);
+        }
+        if (((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
+             & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr))) {
+            if (vlSelfRef.test_game__DOT__game__DOT__regime_store) {
+                if (vlSelfRef.button_u) {
+                    __Vdly__test_game__DOT__game__DOT__board2_h_coord 
+                        = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord))
+                            ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord) 
+                                              - (IData)(0x14U))));
+                } else if (vlSelfRef.button_r) {
+                    __Vdly__test_game__DOT__game__DOT__board2_h_coord 
+                        = ((0x31fU <= ((IData)(0x78U) 
+                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)))
+                            ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
+                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord))));
+                }
+                if (vlSelfRef.button_l) {
+                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                        = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
+                            ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
+                                              - (IData)(0x14U))));
+                } else if (vlSelfRef.button_d) {
+                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                        = ((0x31fU <= ((IData)(0x78U) 
+                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
+                            ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
+                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
+                }
+            } else if ((1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
+                if (((~ (1U & (((IData)(1U) + (IData)(vlSelfRef.accel_data_y)) 
+                               >> 7U))) & (0U != (0xffU 
+                                                  & ((IData)(1U) 
+                                                     + (IData)(vlSelfRef.accel_data_y)))))) {
+                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                        = ((0x14U > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))
+                            ? 0U : (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord) 
+                                              - (IData)(0x14U))));
+                } else if ((1U & ((((IData)(1U) + (IData)(vlSelfRef.accel_data_y)) 
+                                   >> 7U) & (0U != 
+                                             (0xffU 
+                                              & ((IData)(1U) 
+                                                 + (IData)(vlSelfRef.accel_data_y))))))) {
+                    __Vdly__test_game__DOT__game__DOT__board1_h_coord 
+                        = ((0x31fU <= ((IData)(0x78U) 
+                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))
+                            ? 0x2bbU : (0x3ffU & ((IData)(0x14U) 
+                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord))));
+                }
+            }
+            if (vlSelfRef.test_game__DOT__game__DOT__x_direction) {
+                if (((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                     < ((IData)(8U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)))) {
+                    __Vdly__test_game__DOT__game__DOT__x_direction 
+                        = (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__x_direction)));
+                    __Vdly__test_game__DOT__game__DOT__ball_h_coord = 0U;
+                } else {
+                    __Vdly__test_game__DOT__game__DOT__ball_h_coord 
+                        = (0x3ffU & (((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                                      - (IData)(8U)) 
+                                     - (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)));
+                }
+            } else if ((0x31fU <= ((IData)(0x18U) + 
+                                   ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                                    + (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed))))) {
+                __Vdly__test_game__DOT__game__DOT__x_direction 
+                    = (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__x_direction)));
+                __Vdly__test_game__DOT__game__DOT__ball_h_coord = 0x30fU;
+            } else {
+                __Vdly__test_game__DOT__game__DOT__ball_h_coord 
+                    = (0x3ffU & ((IData)(8U) + ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                                                + (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed))));
+            }
+        }
     }
-    vlSelf->sdl_sy = vlSelf->test_game__DOT__display_ctrl__DOT__v_count;
-    vlSelf->sdl_sx = vlSelf->test_game__DOT__display_ctrl__DOT__h_count;
-    vlSelf->sdl_b = (0xffU & ((0xf0U & (((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                          ? ((0xbebc200U 
-                                              > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                              ? (vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                                 [0U] 
-                                                 >> 8U)
-                                              : 0xfU)
-                                          : ((IData)(vlSelf->sw2)
-                                              ? 8U : 0U)) 
-                                        << 4U)) | (0xfU 
-                                                   & ((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                                       ? 
-                                                      ((0xbebc200U 
-                                                        > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                                        ? 
-                                                       (vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                                        [0U] 
-                                                        >> 8U)
-                                                        : 0xfU)
-                                                       : 
-                                                      ((IData)(vlSelf->sw2)
-                                                        ? 8U
-                                                        : 0U)))));
-    vlSelf->sdl_g = (0xffU & ((0xf0U & (((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                          ? ((0xbebc200U 
-                                              > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                              ? (vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                                 [0U] 
-                                                 >> 4U)
-                                              : 0xfU)
-                                          : ((IData)(vlSelf->sw1)
-                                              ? 8U : 0U)) 
-                                        << 4U)) | (0xfU 
-                                                   & ((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                                       ? 
-                                                      ((0xbebc200U 
-                                                        > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                                        ? 
-                                                       (vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                                        [0U] 
-                                                        >> 4U)
-                                                        : 0xfU)
-                                                       : 
-                                                      ((IData)(vlSelf->sw1)
-                                                        ? 8U
-                                                        : 0U)))));
-    vlSelf->sdl_r = (0xffU & ((0xf0U & (((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                          ? ((0xbebc200U 
-                                              > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                              ? vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                             [0U] : 0xfU)
-                                          : ((IData)(vlSelf->sw0)
-                                              ? 8U : 0U)) 
-                                        << 4U)) | (0xfU 
-                                                   & ((IData)(vlSelf->test_game__DOT__game__DOT__object_draw)
-                                                       ? 
-                                                      ((0xbebc200U 
-                                                        > vlSelf->test_game__DOT__game__DOT__logo_counter)
-                                                        ? 
-                                                       vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                                                       [0U]
-                                                        : 0xfU)
-                                                       : 
-                                                      ((IData)(vlSelf->sw0)
-                                                        ? 8U
-                                                        : 0U)))));
-    vlSelf->sdl_de = vlSelf->test_game__DOT__disp_enbl;
-    vlSelf->test_game__DOT__game__DOT__logo_counter 
-        = __Vdly__test_game__DOT__game__DOT__logo_counter;
-    vlSelf->test_game__DOT__disp_enbl = ((IData)(vlSelf->sim_rst) 
-                                         || (((0x31fU 
-                                               > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count)) 
-                                              & (0x258U 
-                                                 > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count))) 
-                                             || ((0x41fU 
-                                                  == (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count)) 
-                                                 & ((0x257U 
-                                                     > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count)) 
-                                                    | (0x273U 
-                                                       == (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count))))));
-    vlSelf->test_game__DOT__display_ctrl__DOT__h_count 
+    if (vlSelfRef.sim_rst) {
+        __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
+    } else if ((((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
+                 & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr)) 
+                & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)))) {
+        __Vdly__test_game__DOT__game__DOT__y_direction 
+            = (1U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction));
+        if ((1U & (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))) {
+            if (((0x14U > ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord) 
+                           - (IData)(0xaU))) & ((((IData)(0x10U) 
+                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)) 
+                                                 > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)) 
+                                                & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                                                   < 
+                                                   ((IData)(0x64U) 
+                                                    + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))))) {
+                __Vdly__test_game__DOT__game__DOT__y_direction 
+                    = ((2U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction)) 
+                       | (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))));
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x14U;
+            } else if (VL_UNLIKELY((0xaU > (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord)))) {
+                VL_WRITEF_NX("you lose\n",0);
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x24eU;
+                __Vdly__test_game__DOT__game__DOT__y_direction = 0U;
+            } else {
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord 
+                    = (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord) 
+                                 - (IData)(0xaU)));
+            }
+        } else if (((0x243U < ((IData)(0x1aU) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord))) 
+                    & ((((IData)(0x10U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)) 
+                        > (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)) 
+                       & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                          < ((IData)(0x64U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)))))) {
+            __Vdly__test_game__DOT__game__DOT__y_direction 
+                = ((2U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction)) 
+                   | (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))));
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x233U;
+        } else if ((0x257U <= ((IData)(0x1aU) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord)))) {
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x247U;
+            __Vdly__test_game__DOT__game__DOT__y_direction = 1U;
+        } else {
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord 
+                = (0x3ffU & ((IData)(0xaU) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord)));
+        }
+    }
+    vlSelfRef.sdl_sx = vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count;
+    vlSelfRef.sdl_sy = vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count;
+    vlSelfRef.sdl_r = (0xffU & ((((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                   ? 0xfU : ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                              ? ((IData)(vlSelfRef.sw6)
+                                                  ? 0xcU
+                                                  : 0xfU)
+                                              : ((IData)(vlSelfRef.sw0)
+                                                  ? 8U
+                                                  : 0U))) 
+                                 << 4U) | ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                            ? 0xfU : 
+                                           ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                             ? ((IData)(vlSelfRef.sw6)
+                                                 ? 0xcU
+                                                 : 0xfU)
+                                             : ((IData)(vlSelfRef.sw0)
+                                                 ? 8U
+                                                 : 0U)))));
+    vlSelfRef.sdl_g = (0xffU & ((((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                   ? ((IData)(vlSelfRef.sw4)
+                                       ? 0xfU : 0U)
+                                   : ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                       ? ((IData)(vlSelfRef.sw7)
+                                           ? 0xcU : 0xfU)
+                                       : ((IData)(vlSelfRef.sw1)
+                                           ? 8U : 0U))) 
+                                 << 4U) | ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                            ? ((IData)(vlSelfRef.sw4)
+                                                ? 0xfU
+                                                : 0U)
+                                            : ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                                ? ((IData)(vlSelfRef.sw7)
+                                                    ? 0xcU
+                                                    : 0xfU)
+                                                : ((IData)(vlSelfRef.sw1)
+                                                    ? 8U
+                                                    : 0U)))));
+    vlSelfRef.sdl_b = (0xffU & ((((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                   ? ((IData)(vlSelfRef.sw5)
+                                       ? 0xfU : 0U)
+                                   : ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                       ? ((IData)(vlSelfRef.sw8)
+                                           ? 0xcU : 0xfU)
+                                       : ((IData)(vlSelfRef.sw2)
+                                           ? 8U : 0U))) 
+                                 << 4U) | ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball)
+                                            ? ((IData)(vlSelfRef.sw5)
+                                                ? 0xfU
+                                                : 0U)
+                                            : ((IData)(vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0)
+                                                ? ((IData)(vlSelfRef.sw8)
+                                                    ? 0xcU
+                                                    : 0xfU)
+                                                : ((IData)(vlSelfRef.sw2)
+                                                    ? 8U
+                                                    : 0U)))));
+    vlSelfRef.sdl_de = vlSelfRef.test_game__DOT__disp_enbl;
+    vlSelfRef.test_game__DOT__game__DOT__x_direction 
+        = __Vdly__test_game__DOT__game__DOT__x_direction;
+    if (vlSelfRef.sim_rst) {
+        vlSelfRef.test_game__DOT__game__DOT__board1_v_coord = 0U;
+        vlSelfRef.test_game__DOT__game__DOT__board2_v_coord = 0x244U;
+    }
+    if (vlSelfRef.sim_rst) {
+        __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
+    } else if ((((IData)(vlSelfRef.test_game__DOT__game__DOT__end_of_frame) 
+                 & (0U == vlSelfRef.test_game__DOT__game__DOT__frames_cntr)) 
+                & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store))) {
+        if ((2U & (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))) {
+            if (((((IData)(vlSelfRef.button_u) | (IData)(vlSelfRef.button_d)) 
+                  | (IData)(vlSelfRef.button_l)) | (IData)(vlSelfRef.button_r))) {
+                __Vdly__test_game__DOT__game__DOT__y_direction 
+                    = (1U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction));
+                vlSelfRef.test_game__DOT__game__DOT__delta_speed 
+                    = ((0x3f0U & (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)) 
+                       | (0xfU & vlSelfRef.test_game__DOT__game__DOT__rand_mod));
+                __Vdly__test_game__DOT__game__DOT__rand_mod 
+                    = VL_RANDOM_I();
+            }
+        } else if ((1U & (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))) {
+            if (((0x14U > ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord) 
+                           - (IData)(0xaU))) & ((((IData)(0x10U) 
+                                                  + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)) 
+                                                 > (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)) 
+                                                & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                                                   < 
+                                                   ((IData)(0x64U) 
+                                                    + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))))) {
+                __Vdly__test_game__DOT__game__DOT__y_direction 
+                    = ((2U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction)) 
+                       | (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))));
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x14U;
+                vlSelfRef.test_game__DOT__game__DOT__delta_speed 
+                    = ((0x3f0U & (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)) 
+                       | (0xfU & vlSelfRef.test_game__DOT__game__DOT__rand_mod));
+                __Vdly__test_game__DOT__game__DOT__rand_mod 
+                    = VL_RANDOM_I();
+            } else if (VL_UNLIKELY((0xaU > (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord)))) {
+                vlSelfRef.test_game__DOT__game__DOT__p2_count 
+                    = (0x7fU & ((IData)(1U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__p2_count)));
+                VL_WRITEF_NX("%3#:%3#\n",0,7,vlSelfRef.test_game__DOT__game__DOT__p1_count,
+                             7,(IData)(vlSelfRef.test_game__DOT__game__DOT__p2_count));
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
+                __Vdly__test_game__DOT__game__DOT__y_direction = 2U;
+            } else {
+                __Vdly__test_game__DOT__game__DOT__ball_v_coord 
+                    = (0x3ffU & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord) 
+                                 - (IData)(0xaU)));
+            }
+        } else if (((0x243U < ((IData)(0x1aU) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord))) 
+                    & ((((IData)(0x10U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)) 
+                        > (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)) 
+                       & ((IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord) 
+                          < ((IData)(0x64U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)))))) {
+            __Vdly__test_game__DOT__game__DOT__y_direction 
+                = ((2U & (IData)(__Vdly__test_game__DOT__game__DOT__y_direction)) 
+                   | (1U & (~ (IData)(vlSelfRef.test_game__DOT__game__DOT__y_direction))));
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x233U;
+            vlSelfRef.test_game__DOT__game__DOT__delta_speed 
+                = ((0x3f0U & (IData)(vlSelfRef.test_game__DOT__game__DOT__delta_speed)) 
+                   | (0xfU & vlSelfRef.test_game__DOT__game__DOT__rand_mod));
+            __Vdly__test_game__DOT__game__DOT__rand_mod 
+                = VL_RANDOM_I();
+        } else if (VL_UNLIKELY((0x257U <= ((IData)(0x1aU) 
+                                           + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord))))) {
+            __Vdly__test_game__DOT__game__DOT__p1_count 
+                = (0x7fU & ((IData)(1U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__p1_count)));
+            VL_WRITEF_NX("%3#:%3#\n",0,7,vlSelfRef.test_game__DOT__game__DOT__p1_count,
+                         7,(IData)(vlSelfRef.test_game__DOT__game__DOT__p2_count));
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord = 0x122U;
+            __Vdly__test_game__DOT__game__DOT__y_direction = 3U;
+        } else {
+            __Vdly__test_game__DOT__game__DOT__ball_v_coord 
+                = (0x3ffU & ((IData)(0xaU) + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord)));
+        }
+    }
+    vlSelfRef.test_game__DOT__disp_enbl = ((IData)(vlSelfRef.sim_rst) 
+                                           || (((0x31fU 
+                                                 > (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                                                & (0x258U 
+                                                   > (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count))) 
+                                               || ((0x41fU 
+                                                    == (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                                                   & ((0x257U 
+                                                       > (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count)) 
+                                                      | (0x273U 
+                                                         == (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count))))));
+    vlSelfRef.test_game__DOT__game__DOT__rand_mod = __Vdly__test_game__DOT__game__DOT__rand_mod;
+    vlSelfRef.test_game__DOT__game__DOT__p1_count = __Vdly__test_game__DOT__game__DOT__p1_count;
+    vlSelfRef.test_game__DOT__game__DOT__y_direction 
+        = __Vdly__test_game__DOT__game__DOT__y_direction;
+    vlSelfRef.test_game__DOT__game__DOT__frames_cntr 
+        = __Vdly__test_game__DOT__game__DOT__frames_cntr;
+    vlSelfRef.test_game__DOT__game__DOT__ball_v_coord 
+        = __Vdly__test_game__DOT__game__DOT__ball_v_coord;
+    vlSelfRef.test_game__DOT__game__DOT__ball_h_coord 
+        = __Vdly__test_game__DOT__game__DOT__ball_h_coord;
+    vlSelfRef.test_game__DOT__game__DOT__board1_h_coord 
+        = __Vdly__test_game__DOT__game__DOT__board1_h_coord;
+    vlSelfRef.test_game__DOT__game__DOT__board2_h_coord 
+        = __Vdly__test_game__DOT__game__DOT__board2_h_coord;
+    vlSelfRef.test_game__DOT__game__DOT__end_of_frame 
+        = ((~ (IData)(vlSelfRef.sim_rst)) & ((0x31fU 
+                                              == (0x3ffU 
+                                                  & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count))) 
+                                             & (0x257U 
+                                                == (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count))));
+    vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count 
         = __Vdly__test_game__DOT__display_ctrl__DOT__h_count;
-    vlSelf->test_game__DOT__display_ctrl__DOT__v_count 
+    vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count 
         = __Vdly__test_game__DOT__display_ctrl__DOT__v_count;
-    vlSelf->test_game__DOT__game__DOT__object_draw 
-        = ((0xbebc200U > vlSelf->test_game__DOT__game__DOT__logo_counter) 
-           & (((((0x14fU <= (0x3ffU & (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count))) 
-                 & (0x1cfU > (0x3ffU & (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__h_count)))) 
-                & (0xebU <= (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count))) 
-               & (0x16bU > (IData)(vlSelf->test_game__DOT__display_ctrl__DOT__v_count))) 
-              & (0U != vlSelf->test_game__DOT__game__DOT__logo_rom__DOT__rom
-                 [0U])));
+    vlSelfRef.test_game__DOT__game__DOT__ball = (((
+                                                   ((0x3ffU 
+                                                     & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                                                    >= (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)) 
+                                                   & ((0x3ffU 
+                                                       & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                                                      <= 
+                                                      ((IData)(0x10U) 
+                                                       + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_h_coord)))) 
+                                                  & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+                                                     >= (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord))) 
+                                                 & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+                                                    <= 
+                                                    ((IData)(0x10U) 
+                                                     + (IData)(vlSelfRef.test_game__DOT__game__DOT__ball_v_coord))));
 }
 
-void Vmain___024root___eval_nba(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+VL_INLINE_OPT void Vmain___024root___nba_sequent__TOP__2(Vmain___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_nba\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___nba_sequent__TOP__2\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        Vmain___024root___nba_sequent__TOP__0(vlSelf);
-    }
+    vlSelfRef.test_game__DOT__game__DOT__regime_store 
+        = vlSelfRef.__Vdly__test_game__DOT__game__DOT__regime_store;
+}
+
+VL_INLINE_OPT void Vmain___024root___nba_comb__TOP__0(Vmain___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___nba_comb__TOP__0\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.test_game__DOT__game__DOT____VdfgRegularize_h4fb47ce6_2_0 
+        = ((((((0x3ffU & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+               >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)) 
+              & ((0x3ffU & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                 <= ((IData)(0x64U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_h_coord)))) 
+             & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+                >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_v_coord))) 
+            & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+               <= ((IData)(0x14U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board1_v_coord)))) 
+           | ((((((0x3ffU & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                  >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)) 
+                 & ((0x3ffU & (IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__h_count)) 
+                    <= ((IData)(0x64U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_h_coord)))) 
+                & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+                   >= (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord))) 
+               & ((IData)(vlSelfRef.test_game__DOT__display_ctrl__DOT__v_count) 
+                  <= ((IData)(0x14U) + (IData)(vlSelfRef.test_game__DOT__game__DOT__board2_v_coord)))) 
+              & (IData)(vlSelfRef.test_game__DOT__game__DOT__regime_store)));
 }
 
 void Vmain___024root___eval_triggers__act(Vmain___024root* vlSelf);
 
 bool Vmain___024root___eval_phase__act(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_phase__act\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Init
-    VlTriggerVec<1> __VpreTriggered;
+    VlTriggerVec<2> __VpreTriggered;
     CData/*0:0*/ __VactExecute;
     // Body
     Vmain___024root___eval_triggers__act(vlSelf);
-    __VactExecute = vlSelf->__VactTriggered.any();
+    __VactExecute = vlSelfRef.__VactTriggered.any();
     if (__VactExecute) {
-        __VpreTriggered.andNot(vlSelf->__VactTriggered, vlSelf->__VnbaTriggered);
-        vlSelf->__VnbaTriggered.thisOr(vlSelf->__VactTriggered);
+        __VpreTriggered.andNot(vlSelfRef.__VactTriggered, vlSelfRef.__VnbaTriggered);
+        vlSelfRef.__VnbaTriggered.thisOr(vlSelfRef.__VactTriggered);
         Vmain___024root___eval_act(vlSelf);
     }
     return (__VactExecute);
 }
 
 bool Vmain___024root___eval_phase__nba(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_phase__nba\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Init
     CData/*0:0*/ __VnbaExecute;
     // Body
-    __VnbaExecute = vlSelf->__VnbaTriggered.any();
+    __VnbaExecute = vlSelfRef.__VnbaTriggered.any();
     if (__VnbaExecute) {
         Vmain___024root___eval_nba(vlSelf);
-        vlSelf->__VnbaTriggered.clear();
+        vlSelfRef.__VnbaTriggered.clear();
     }
     return (__VnbaExecute);
 }
@@ -198,9 +511,10 @@ VL_ATTR_COLD void Vmain___024root___dump_triggers__act(Vmain___024root* vlSelf);
 #endif  // VL_DEBUG
 
 void Vmain___024root___eval(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Init
     IData/*31:0*/ __VnbaIterCount;
     CData/*0:0*/ __VnbaContinue;
@@ -216,20 +530,20 @@ void Vmain___024root___eval(Vmain___024root* vlSelf) {
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         __VnbaContinue = 0U;
-        vlSelf->__VactIterCount = 0U;
-        vlSelf->__VactContinue = 1U;
-        while (vlSelf->__VactContinue) {
-            if (VL_UNLIKELY((0x64U < vlSelf->__VactIterCount))) {
+        vlSelfRef.__VactIterCount = 0U;
+        vlSelfRef.__VactContinue = 1U;
+        while (vlSelfRef.__VactContinue) {
+            if (VL_UNLIKELY((0x64U < vlSelfRef.__VactIterCount))) {
 #ifdef VL_DEBUG
                 Vmain___024root___dump_triggers__act(vlSelf);
 #endif
                 VL_FATAL_MT("main.sv", 1, "", "Active region did not converge.");
             }
-            vlSelf->__VactIterCount = ((IData)(1U) 
-                                       + vlSelf->__VactIterCount);
-            vlSelf->__VactContinue = 0U;
+            vlSelfRef.__VactIterCount = ((IData)(1U) 
+                                         + vlSelfRef.__VactIterCount);
+            vlSelfRef.__VactContinue = 0U;
             if (Vmain___024root___eval_phase__act(vlSelf)) {
-                vlSelf->__VactContinue = 1U;
+                vlSelfRef.__VactContinue = 1U;
             }
         }
         if (Vmain___024root___eval_phase__nba(vlSelf)) {
@@ -240,41 +554,42 @@ void Vmain___024root___eval(Vmain___024root* vlSelf) {
 
 #ifdef VL_DEBUG
 void Vmain___024root___eval_debug_assertions(Vmain___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
+    (void)vlSelf;  // Prevent unused variable warning
     Vmain__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmain___024root___eval_debug_assertions\n"); );
+    auto &vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    if (VL_UNLIKELY((vlSelf->pixel_clk & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.pixel_clk & 0xfeU))) {
         Verilated::overWidthError("pixel_clk");}
-    if (VL_UNLIKELY((vlSelf->sim_rst & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sim_rst & 0xfeU))) {
         Verilated::overWidthError("sim_rst");}
-    if (VL_UNLIKELY((vlSelf->button_c & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.button_c & 0xfeU))) {
         Verilated::overWidthError("button_c");}
-    if (VL_UNLIKELY((vlSelf->button_u & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.button_u & 0xfeU))) {
         Verilated::overWidthError("button_u");}
-    if (VL_UNLIKELY((vlSelf->button_d & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.button_d & 0xfeU))) {
         Verilated::overWidthError("button_d");}
-    if (VL_UNLIKELY((vlSelf->button_r & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.button_r & 0xfeU))) {
         Verilated::overWidthError("button_r");}
-    if (VL_UNLIKELY((vlSelf->button_l & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.button_l & 0xfeU))) {
         Verilated::overWidthError("button_l");}
-    if (VL_UNLIKELY((vlSelf->sw0 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw0 & 0xfeU))) {
         Verilated::overWidthError("sw0");}
-    if (VL_UNLIKELY((vlSelf->sw1 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw1 & 0xfeU))) {
         Verilated::overWidthError("sw1");}
-    if (VL_UNLIKELY((vlSelf->sw2 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw2 & 0xfeU))) {
         Verilated::overWidthError("sw2");}
-    if (VL_UNLIKELY((vlSelf->sw3 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw3 & 0xfeU))) {
         Verilated::overWidthError("sw3");}
-    if (VL_UNLIKELY((vlSelf->sw4 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw4 & 0xfeU))) {
         Verilated::overWidthError("sw4");}
-    if (VL_UNLIKELY((vlSelf->sw5 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw5 & 0xfeU))) {
         Verilated::overWidthError("sw5");}
-    if (VL_UNLIKELY((vlSelf->sw6 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw6 & 0xfeU))) {
         Verilated::overWidthError("sw6");}
-    if (VL_UNLIKELY((vlSelf->sw7 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw7 & 0xfeU))) {
         Verilated::overWidthError("sw7");}
-    if (VL_UNLIKELY((vlSelf->sw8 & 0xfeU))) {
+    if (VL_UNLIKELY((vlSelfRef.sw8 & 0xfeU))) {
         Verilated::overWidthError("sw8");}
 }
 #endif  // VL_DEBUG
